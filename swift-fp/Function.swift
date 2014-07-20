@@ -8,11 +8,24 @@
 
 import Foundation
 
+func call <A> (f: () -> A) -> A {
+  return f()
+}
+
 /**
- Identity
+ Identity function
  */
 func identity <A> (x: A) -> A {
   return x
+}
+
+/**
+ Constant function
+ */
+func constant <A> (x: A) -> A -> A {
+  return {y in
+    return x
+  }
 }
 
 /**
@@ -33,7 +46,7 @@ operator infix |> {associativity left}
   return f(x)
 }
 
-operator infix <| {associativity left}
+operator infix <| {associativity right}
 @infix func <| <A, B> (f: A -> B, x: A) -> B {
   return f(x)
 }

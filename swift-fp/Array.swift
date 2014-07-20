@@ -8,6 +8,27 @@
 
 import Foundation
 
+/**
+ Semigroup
+ */
+extension Array : Semigroup {
+  func op (xs: Array<T>) -> Array<T> {
+    return self + xs
+  }
+}
+
+/**
+ Monoid
+ */
+extension Array : Monoid {
+  static func mzero() -> Array<T> {
+    return []
+  }
+}
+
+/**
+ Partial application of +
+ */
 operator prefix + {}
 @prefix func + <A> (xs: [A]) -> [A] -> [A] {
   return {$0 + xs}
@@ -22,7 +43,7 @@ operator postfix + {}
  Concat list of lists
  */
 func concat <A> (xss: [[A]]) -> [A] {
-  return xss.reduce([], +)
+  return mconcat(xss)
 }
 
 /**
@@ -37,6 +58,7 @@ func fmap <A, B> (f: A -> B) -> [A] -> [B] {
 /**
  Monad
  */
+
 func bind <A, B> (xs: [A], f: A -> [B]) -> [B] {
   return (concat * fmap(f))(xs)
 }
@@ -58,17 +80,6 @@ operator prefix >>= {}
   return {xs in
     return bind(xs, f)
   }
-}
-
-/**
- Additive monad
- */
-func mzero <A> () -> [A] {
-  return []
-}
-
-func mplus <A> (xs: [A], ys: [A]) -> [A] {
-  return xs + ys
 }
 
 /**
@@ -100,3 +111,7 @@ operator prefix <*> {}
     return ap(fs)(xs)
   }
 }
+
+
+
+

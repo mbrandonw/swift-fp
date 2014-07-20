@@ -142,6 +142,10 @@ func fmap <A, B> (f: A -> B) -> Set<A> -> Set<B> {
 /**
  Monad
  */
+func unit <A> (x: A) -> Set<A> {
+  return Set<A>(x)
+}
+
 func bind <A, B> (set: Set<A>, f: A -> Set<B>) -> Set<B> {
   return set.elements().reduce(Set<B>()) {acc, a in
     return union(acc, f(a))

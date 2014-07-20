@@ -9,6 +9,7 @@
 import Foundation
 
 /**
+ Constant nil function
  */
 func nilFunction <A, B> (x: A) -> B? {
   return nil
