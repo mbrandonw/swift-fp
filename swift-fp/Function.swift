@@ -8,10 +8,6 @@
 
 import Foundation
 
-func call <A> (f: () -> A) -> A {
-  return f()
-}
-
 /**
  Identity function
  */
