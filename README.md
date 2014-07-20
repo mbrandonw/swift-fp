@@ -45,7 +45,7 @@ tan <| 3.1415 //=> -.000092...
 
 ## Functor, Monad, Applicative
 
-We don't have the real versions of these things, but I've implemented the necessary functions to make them act like the corresponding typeclasses. For example:
+We don't have the real versions of these things, but I've implemented the necessary functions for a few types to make them act like the corresponding typeclasses. For example:
 
 ```swift
 func square (x: Int) -> Int {
@@ -65,10 +65,14 @@ square(halfInt(21)!) // crash!
 
 // completely safe
 fmap(square)(halfInt(20)) //=> {Some 100}
-fmap(square)(halfInt(21)) //=> {None}
+fmap(square)(halfInt(21)) //=> nil
 
 // or using our combinators
 20 |> halfInt |> fmap(square)
+
+// bind (>>=) is also available
+20 >>= halfInt >>= halfInt //=> {Some 5}
+20 >>= halfInt >>= halfInt >>= halfInt //=> nil
 ```
 
 ## Set
