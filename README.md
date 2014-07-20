@@ -61,6 +61,7 @@ func halfInt (x: Int) -> Int? {
 
 square(halfInt(20))  // doesn't work
 square(halfInt(20)!) // works, but not safe
+square(halfInt(21)!) // crash!
 
 // completely safe
 fmap(square)(halfInt(20)) //=> {Some 100}
