@@ -122,7 +122,7 @@ extension UInt: Num {
   func multiply(y: T) -> T { return self * y }
 }
 
-extension Float: Num {
+extension Float: SignedNum {
   typealias T = Float
   static func zero() -> T { return 0.0 }
   func add(y: T) -> T { return self + y }
@@ -130,7 +130,7 @@ extension Float: Num {
   func negate() -> T { return -self }
 }
 
-extension Double: Num {
+extension Double: SignedNum {
   typealias T = Double
   static func zero() -> T { return 0.0 }
   func add(y: T) -> T { return self + y }
