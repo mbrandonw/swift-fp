@@ -83,5 +83,14 @@ An implementation of a set. Not really happy with it, but it's there.
 
 Haven't pushed this yet, but getting close to a nice implementation.
 
+## Math
 
+Added some cool math functions with nice, simple, functional implementations:
+
+```swift
+gcd(3333333, 777775) //=> 1
+xgcd(6, 15)          //=> (-2, 1, 3)
+modinv(5, 19)        //=> {Some 4}
+modinv(5, 20)        //=> nil
+```
 

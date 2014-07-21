@@ -19,6 +19,7 @@
 		CAE630EF1979CB72008D4143 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE630EE1979CB72008D4143 /* Optional.swift */; };
 		CAE630F11979CE35008D4143 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE630F01979CE35008D4143 /* Dictionary.swift */; };
 		CAE630F31979CF34008D4143 /* Tuples.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE630F21979CF34008D4143 /* Tuples.swift */; };
+		CAFBB3EE197C980800987877 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFBB3ED197C980800987877 /* Math.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		CAE630EE1979CB72008D4143 /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		CAE630F01979CE35008D4143 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		CAE630F21979CF34008D4143 /* Tuples.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tuples.swift; sourceTree = "<group>"; };
+		CAFBB3ED197C980800987877 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				CAE630EC1979C61E008D4143 /* Array.swift */,
 				CAE630F01979CE35008D4143 /* Dictionary.swift */,
 				CAE630EA1979C4D9008D4143 /* Function.swift */,
+				CAFBB3ED197C980800987877 /* Math.swift */,
 				CA1A29F7197B176B00AC3637 /* Monoid.swift */,
 				CAC615B8197C17F50060F605 /* Num.swift */,
 				CAE630EE1979CB72008D4143 /* Optional.swift */,
@@ -231,6 +234,7 @@
 				CAE630ED1979C61E008D4143 /* Array.swift in Sources */,
 				CAE630EF1979CB72008D4143 /* Optional.swift in Sources */,
 				CA1A29F8197B176B00AC3637 /* Monoid.swift in Sources */,
+				CAFBB3EE197C980800987877 /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
