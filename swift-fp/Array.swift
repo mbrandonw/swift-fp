@@ -1,11 +1,3 @@
-//
-//  Array.swift
-//  swift-fp
-//
-//  Created by Brandon Williams on 7/18/14.
-//  Copyright (c) 2014 Brandon Williams. All rights reserved.
-//
-
 import Foundation
 
 /**
@@ -29,13 +21,13 @@ extension Array : Monoid {
 /**
  Partial application of +
  */
-operator prefix + {}
-@prefix func + <A> (xs: [A]) -> [A] -> [A] {
+prefix operator + {}
+prefix func + <A> (xs: [A]) -> [A] -> [A] {
   return {$0 + xs}
 }
 
-operator postfix + {}
-@postfix func + <A> (xs: [A]) -> [A] -> [A] {
+postfix operator + {}
+postfix func + <A> (xs: [A]) -> [A] -> [A] {
   return {xs + $0}
 }
 
@@ -63,20 +55,20 @@ func bind <A, B> (xs: [A], f: A -> [B]) -> [B] {
   return (concat * fmap(f))(xs)
 }
 
-operator infix >>= {associativity left}
-@infix func >>= <A, B> (xs: [A], f: A -> [B]) -> [B] {
+infix operator >>= {associativity left}
+func >>= <A, B> (xs: [A], f: A -> [B]) -> [B] {
   return bind(xs, f)
 }
 
-operator postfix >>= {}
-@postfix func >>= <A, B> (xs: [A]) -> (A -> [B]) -> [B] {
+postfix operator >>= {}
+postfix func >>= <A, B> (xs: [A]) -> (A -> [B]) -> [B] {
   return {f in
     return bind(xs, f)
   }
 }
 
-operator prefix >>= {}
-@prefix func >>= <A, B> (f: A -> [B]) -> [A] -> [B] {
+prefix operator >>= {}
+prefix func >>= <A, B> (f: A -> [B]) -> [A] -> [B] {
   return {xs in
     return bind(xs, f)
   }
@@ -95,20 +87,40 @@ func ap <A, B> (fs: [A -> B]) -> [A] -> [B] {
   }
 }
 
-operator infix <*> {associativity left}
-@infix func <*> <A, B> (fs: [A -> B], xs: [A]) -> [B] {
+infix operator <*> {associativity left}
+func <*> <A, B> (fs: [A -> B], xs: [A]) -> [B] {
   return ap(fs)(xs)
 }
 
-operator postfix <*> {}
-@postfix func <*> <A, B> (fs: [A -> B]) -> [A] -> [B] {
+postfix operator <*> {}
+postfix func <*> <A, B> (fs: [A -> B]) -> [A] -> [B] {
   return ap(fs)
 }
 
-operator prefix <*> {}
-@prefix func <*> <A, B> (xs: [A]) -> [A -> B] -> [B] {
+prefix operator <*> {}
+prefix func <*> <A, B> (xs: [A]) -> [A -> B] -> [B] {
   return {fs in
     return ap(fs)(xs)
+  }
+}
+
+/**
+ Foldable
+ */
+
+func foldl <A, B> (f: B -> A -> B) -> B -> [A] -> B {
+  return {initial in
+    return {xs in
+      return xs.reduce(initial, combine: uncurry(f))
+    }
+  }
+}
+
+func foldr <A, B> (f: A -> B -> B) -> B -> [A] -> B {
+  return {initial in
+    return {xs in
+      return xs.reduce(initial, uncurry(f) * flip)
+    }
   }
 }
 

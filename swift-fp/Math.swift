@@ -1,11 +1,3 @@
-//
-//  Math.swift
-//  swift-fp
-//
-//  Created by Brandon Williams on 7/20/14.
-//  Copyright (c) 2014 Kickstarter. All rights reserved.
-//
-
 import Foundation
 
 func gcd (a: Int, b: Int) -> Int {

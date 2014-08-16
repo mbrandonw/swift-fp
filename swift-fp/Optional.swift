@@ -1,11 +1,3 @@
-//
-//  Optional.swift
-//  swift-fp
-//
-//  Created by Brandon Williams on 7/18/14.
-//  Copyright (c) 2014 Brandon Williams. All rights reserved.
-//
-
 import Foundation
 
 /**
@@ -39,18 +31,18 @@ func bind <A, B> (x: A?) -> (A -> B?) -> B? {
   }
 }
 
-operator infix >>= {associativity left}
-@infix func >>= <A, B> (x: A?, f: A -> B?) -> B? {
+infix operator >>= {associativity left}
+func >>= <A, B> (x: A?, f: A -> B?) -> B? {
   return bind(x)(f)
 }
 
-operator postfix >>= {}
-@postfix func >>= <A, B> (x: A?) -> (A -> B?) -> B? {
+postfix operator >>= {}
+postfix func >>= <A, B> (x: A?) -> (A -> B?) -> B? {
   return bind(x)
 }
 
-operator prefix >>= {}
-@postfix func >>= <A, B> (f: A -> B?) -> A? -> B? {
+prefix operator >>= {}
+prefix func >>= <A, B> (f: A -> B?) -> A? -> B? {
   return {x in
     return bind(x)(f)
   }
@@ -70,18 +62,18 @@ func ap <A, B> (f: (A -> B)?) -> A? -> B? {
   }
 }
 
-operator infix <*> {associativity left}
-@infix func <*> <A, B> (f: (A -> B)?, x: A?) -> B? {
+infix operator <*> {associativity left}
+func <*> <A, B> (f: (A -> B)?, x: A?) -> B? {
   return ap(f)(x)
 }
 
-operator postfix <*> {}
-@postfix func <*> <A, B> (f: (A -> B)?) -> A? -> B? {
+postfix operator <*> {}
+postfix func <*> <A, B> (f: (A -> B)?) -> A? -> B? {
   return ap(f)
 }
 
-operator prefix <*> {}
-@prefix func <*> <A, B> (x: A?) -> (A -> B)? -> B? {
+prefix operator <*> {}
+prefix func <*> <A, B> (x: A?) -> (A -> B)? -> B? {
   return {f in
     return ap(f)(x)
   }

@@ -1,11 +1,3 @@
-//
-//  Function.swift
-//  swift-fp
-//
-//  Created by Brandon Williams on 7/18/14.
-//  Copyright (c) 2014 Brandon Williams. All rights reserved.
-//
-
 import Foundation
 
 /**
@@ -18,6 +10,7 @@ func identity <A> (x: A) -> A {
 /**
  Constant function
  */
+
 func constant <A> (x: A) -> A -> A {
   return {y in
     return x
@@ -26,9 +19,9 @@ func constant <A> (x: A) -> A -> A {
 
 /**
  Function composition
-(f * g)(x) = f(g(x))
  */
-@infix func * <A,B,C> (g: B -> C, f: A -> B) -> (A -> C) {
+
+func * <A,B,C> (g: B -> C, f: A -> B) -> (A -> C) {
   return { g(f($0)) }
 }
 
@@ -37,12 +30,42 @@ func constant <A> (x: A) -> A -> A {
  x |> f
  f <| x
  */
-operator infix |> {associativity left}
-@infix func |> <A, B> (x: A, f: A -> B) -> B {
+infix operator |> {associativity left}
+func |> <A, B> (x: A, f: A -> B) -> B {
   return f(x)
 }
 
-operator infix <| {associativity right}
-@infix func <| <A, B> (f: A -> B, x: A) -> B {
+infix operator <| {associativity right}
+func <| <A, B> (f: A -> B, x: A) -> B {
   return f(x)
 }
+
+/**
+ Currying
+ */
+func curry <A, B, C> (f: (A, B) -> C) -> A -> B -> C {
+  return {a in
+    return {b in
+      return f(a, b)
+    }
+  }
+}
+
+func uncurry <A, B, C> (f: A -> B -> C) -> (A, B) -> C {
+  return {a, b in
+    return f(a)(b)
+  }
+}
+
+/**
+ Permuting arguments
+ */
+func swap <A, B, C> (f: (A, B) -> C) -> (B, A) -> C {
+  return {b, a in
+    return f(a, b)
+  }
+}
+
+
+
+

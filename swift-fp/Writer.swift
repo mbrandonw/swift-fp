@@ -1,11 +1,3 @@
-//
-//  Writer.swift
-//  swift-fp
-//
-//  Created by Brandon Williams on 7/19/14.
-//  Copyright (c) 2014 Brandon Williams. All rights reserved.
-//
-
 import Foundation
 
 struct Writer <A> {
@@ -64,8 +56,8 @@ func bind <A, B> (x: Writer<A>) -> (A -> Writer<B>) -> Writer<B> {
   }
 }
 
-operator infix >>= {}
-@infix func >>= <A, B> (x: Writer<A>, f: A -> Writer<B>) -> Writer<B> {
+infix operator >>= {}
+func >>= <A, B> (x: Writer<A>, f: A -> Writer<B>) -> Writer<B> {
   return bind(x)(f)
 }
 

@@ -1,11 +1,3 @@
-//
-//  Dictionary.swift
-//  swift-fp
-//
-//  Created by Brandon Williams on 7/18/14.
-//  Copyright (c) 2014 Brandon Williams. All rights reserved.
-//
-
 import Foundation
 
 func merge <A: Hashable, B> (x: [A:B], y: [A:B]) -> [A:B] {

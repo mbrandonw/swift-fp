@@ -1,11 +1,3 @@
-//
-//  Set.swift
-//  swift-fp
-//
-//  Created by Brandon Williams on 7/19/14.
-//  Copyright (c) 2014 Brandon Williams. All rights reserved.
-//
-
 import Foundation
 
 struct Set<A: Hashable> {
@@ -66,23 +58,24 @@ extension Set {
  Equatable
  */
 extension Set : Equatable {}
-@infix func == <A> (lhs: Set<A>, rhs: Set<A>) -> Bool {
+func == <A> (lhs: Set<A>, rhs: Set<A>) -> Bool {
   return lhs.count == rhs.count && lhs.elements().filter {rhs[$0]}.count == lhs.count
 }
 
 /**
- LogicValue
+ BooleanType
  */
-extension Set : LogicValue {
-  func getLogicValue() -> Bool {
+extension Set : BooleanType {
+  var boolValue: Bool { get {
     return elements().count > 0
+    }
   }
 }
 
 /**
  Sequence
  */
-struct SetGenerator<A> : Generator {
+struct SetGenerator<A> : GeneratorType {
   var items: Slice<A>
 
   mutating func next() -> A? {
@@ -93,7 +86,7 @@ struct SetGenerator<A> : Generator {
   }
 }
 
-extension Set : Sequence {
+extension Set : SequenceType {
   func generate() -> SetGenerator<A> {
     return SetGenerator(items: elements()[0..<count])
   }
@@ -152,8 +145,8 @@ func bind <A, B> (set: Set<A>, f: A -> Set<B>) -> Set<B> {
   }
 }
 
-operator infix >>= {}
-@infix func >>= <A, B> (set: Set<A>, f: A -> Set<B>) -> Set<B> {
+infix operator >>= {}
+func >>= <A, B> (set: Set<A>, f: A -> Set<B>) -> Set<B> {
   return bind(set, f)
 }
 

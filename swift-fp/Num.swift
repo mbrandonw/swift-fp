@@ -1,11 +1,3 @@
-//
-//  Num.swift
-//  swift-fp
-//
-//  Created by Brandon Williams on 7/20/14.
-//  Copyright (c) 2014 Brandon Williams. All rights reserved.
-//
-
 import Foundation
 
 /**
@@ -24,23 +16,23 @@ protocol SignedNum : Num {
 /**
  Partial application of * and +
  */
-operator prefix * {}
-@prefix func * <A: Num> (x: A) -> A -> A {
+prefix operator * {}
+prefix func * <A: Num> (x: A) -> A -> A {
   return { $0.multiply(x) }
 }
 
-operator postfix * {}
-@postfix func * <A: Num> (x: A) -> A -> A {
+postfix operator * {}
+postfix func * <A: Num> (x: A) -> A -> A {
   return { x.multiply($0) }
 }
 
-operator prefix + {}
-@prefix func + <A: Num> (x: A) -> A -> A {
+prefix operator + {}
+prefix func + <A: Num> (x: A) -> A -> A {
   return { $0.add(x) }
 }
 
-operator postfix + {}
-@postfix func + <A: Num> (x: A) -> A -> A {
+postfix operator + {}
+postfix func + <A: Num> (x: A) -> A -> A {
   return { x.add($0) }
 }
 

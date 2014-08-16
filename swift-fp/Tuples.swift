@@ -1,11 +1,3 @@
-//
-//  Tuples.swift
-//  swift-fp
-//
-//  Created by Brandon Williams on 7/18/14.
-//  Copyright (c) 2014 Brandon Williams. All rights reserved.
-//
-
 import Foundation
 
 /**
@@ -127,6 +119,30 @@ func _6 <A, B, C, D, E, F, G> (x: (A, B, C, D, E, F, G)) -> G {
 */
 func flip <A, B> (x: (A, B)) -> (B, A) {
   return (x.1, x.0)
+}
+
+func flip0 <A, B> (x: (A, B)) -> (B, A) {
+  return flip(x)
+}
+
+func flip0 <A, B, C> (x: (A, B, C)) -> (B, A, C) {
+  return (x.1, x.0, x.2)
+}
+
+func flip1 <A, B, C> (x: (A, B, C)) -> (A, C, B) {
+  return (x.0, x.2, x.1)
+}
+
+func flip0 <A, B, C, D> (x: (A, B, C, D)) -> (B, A, C, D) {
+  return (x.1, x.0, x.2, x.3)
+}
+
+func flip1 <A, B, C, D> (x: (A, B, C, D)) -> (A, C, B, D) {
+  return (x.0, x.2, x.1, x.3)
+}
+
+func flip2 <A, B, C, D> (x: (A, B, C, D)) -> (A, B, D, C) {
+  return (x.0, x.1, x.3, x.2)
 }
 
 /**
