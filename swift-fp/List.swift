@@ -28,3 +28,21 @@ extension List : Printable, DebugPrintable {
     }
   }
 }
+
+/**
+ Functor
+*/
+func fmap <A, B> (f: A -> B) -> List<A> -> List<B> {
+  return {list in
+    switch list {
+    case .Nil:
+      return .Nil
+    case let .Cons(head, tail):
+      return .Cons(f(head()), fmap(f)(tail()))
+    }
+  }
+}
+
+/**
+ Monad
+ */
