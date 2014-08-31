@@ -8,6 +8,16 @@ func nilFunction <A, B> (x: A) -> B? {
 }
 
 /**
+ Flatten
+ */
+func flatten <A> (x: A??) -> A? {
+  if let x = x {
+    return x
+  }
+  return nil
+}
+
+/**
  Functor
  */
 func fmap <A, B> (f: A -> B) -> A? -> B? {
@@ -46,6 +56,10 @@ prefix func >>= <A, B> (f: A -> B?) -> A? -> B? {
   return {x in
     return bind(x)(f)
   }
+}
+
+func join <A> (x: A??) -> A? {
+  return flatten(x)
 }
 
 /**
