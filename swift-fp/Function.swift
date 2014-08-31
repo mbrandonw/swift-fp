@@ -25,6 +25,14 @@ func * <A,B,C> (g: B -> C, f: A -> B) -> (A -> C) {
   return { g(f($0)) }
 }
 
+infix operator ^ {associativity left}
+func ^ <A> (f: A -> A, n: UInt) -> A -> A {
+  if n == 0 {
+    return identity
+  }
+  return f * (f^(n-1))
+}
+
 /**
  Pipe operators
  x |> f
