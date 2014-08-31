@@ -38,6 +38,10 @@ func concat <A> (xss: [[A]]) -> [A] {
   return mconcat(xss)
 }
 
+func flatten <A> (xss: [[A]]) -> [A] {
+  return concat(xss)
+}
+
 /**
  Functor
  */
@@ -72,6 +76,10 @@ prefix func >>= <A, B> (f: A -> [B]) -> [A] -> [B] {
   return {xs in
     return bind(xs, f)
   }
+}
+
+func join <A> (xss: [[A]]) -> [A] {
+  return concat(xss)
 }
 
 /**
@@ -123,7 +131,3 @@ func foldr <A, B> (f: A -> B -> B) -> B -> [A] -> B {
     }
   }
 }
-
-
-
-
