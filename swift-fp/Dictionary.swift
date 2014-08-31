@@ -46,7 +46,7 @@ func fmap <A: Hashable, B, C> (f: B -> C) -> [A:B] -> [A:C] {
 */
 func bind <A: Hashable, B: Hashable, C, D> (kvs: [A:C], f: (A, C) -> [B:D]) -> [B:D] {
   return reduce(kvs.keys, [B:D]()) { acc, k in
-    let v = kvs[k] as C
+    let v = kvs[k]! as C
     return merge(acc, f(k, v))
   }
 }
