@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CA1A29F8197B176B00AC3637 /* Monoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A29F7197B176B00AC3637 /* Monoid.swift */; };
 		CA56E80219B2538500234AFA /* Ordering.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA56E80119B2538500234AFA /* Ordering.swift */; };
+		CA56E80419B2A2A500234AFA /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA56E80319B2A2A500234AFA /* List.swift */; };
 		CA5CF1E219A0081900B24959 /* LeafyTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5CF1E119A0081900B24959 /* LeafyTree.swift */; };
 		CA5CF1E419A00C6700B24959 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5CF1E319A00C6700B24959 /* Tree.swift */; };
 		CA68EE0D197AF8C900BD0067 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA68EE0C197AF8C900BD0067 /* Promise.swift */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		CA1A29F7197B176B00AC3637 /* Monoid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monoid.swift; sourceTree = "<group>"; };
 		CA56E80119B2538500234AFA /* Ordering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ordering.swift; sourceTree = "<group>"; };
+		CA56E80319B2A2A500234AFA /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		CA5CF1E119A0081900B24959 /* LeafyTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeafyTree.swift; sourceTree = "<group>"; };
 		CA5CF1E319A00C6700B24959 /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		CA68EE0C197AF8C900BD0067 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				CAE630F01979CE35008D4143 /* Dictionary.swift */,
 				CAE630EA1979C4D9008D4143 /* Function.swift */,
 				CA5CF1E119A0081900B24959 /* LeafyTree.swift */,
+				CA56E80319B2A2A500234AFA /* List.swift */,
 				CAFBB3ED197C980800987877 /* Math.swift */,
 				CA1A29F7197B176B00AC3637 /* Monoid.swift */,
 				CAC615B8197C17F50060F605 /* Num.swift */,
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAE630EB1979C4D9008D4143 /* Function.swift in Sources */,
+				CA56E80419B2A2A500234AFA /* List.swift in Sources */,
 				CAE630F31979CF34008D4143 /* Tuples.swift in Sources */,
 				CA68EE0D197AF8C900BD0067 /* Promise.swift in Sources */,
 				CAE34ECD197AC719007473A4 /* Set.swift in Sources */,
