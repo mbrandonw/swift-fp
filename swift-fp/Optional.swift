@@ -23,7 +23,7 @@ func flatten <A> (x: A??) -> A? {
 func fmap <A, B> (f: A -> B) -> A? -> B? {
   return {x in
     switch x {
-    case .Some(let x): return f(x)
+    case let .Some(x): return f(x)
     case .None: return nil
     }
   }
@@ -35,7 +35,7 @@ func fmap <A, B> (f: A -> B) -> A? -> B? {
 func bind <A, B> (x: A?) -> (A -> B?) -> B? {
   return {f in
     switch x {
-    case .Some(let x): return f(x)
+    case let .Some(x): return f(x)
     case .None: return nil
     }
   }
@@ -71,7 +71,7 @@ func pure <A> (x: A) -> A? {
 
 func ap <A, B> (f: (A -> B)?) -> A? -> B? {
   switch f {
-  case .Some(let f): return fmap(f)
+  case let .Some(f): return fmap(f)
   case .None: return nilFunction
   }
 }
