@@ -150,4 +150,8 @@ func >>= <A, B> (set: Set<A>, f: A -> Set<B>) -> Set<B> {
   return bind(set, f)
 }
 
+//func join <A> (xss: Set<Set<A>>) -> Set<A> {
+//  return reduce(union)(xss)
+//}
+
 
