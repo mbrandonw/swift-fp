@@ -13,6 +13,31 @@ enum LeafyTree <A> {
 }
 
 /**
+Printable
+*/
+
+extension LeafyTree : Printable {
+  var description: String {
+    get {
+      return _description("")
+    }
+  }
+
+  private func _description(indent: String) -> String {
+    switch self {
+    case .Empty:
+      return "\(indent)(empty)"
+    case let .Leaf(value):
+      return "\(indent)\(value())"
+    case let .Node(left, right):
+      let leftDescription = left()._description(indent + "|--")
+      let rightDescription = right()._description(indent + "|--")
+      return "\(indent)(*)\n\(leftDescription)\n\(rightDescription)"
+    }
+  }
+}
+
+/**
  Functor
  */
 
