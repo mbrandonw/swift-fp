@@ -10,7 +10,6 @@ func identity <A> (x: A) -> A {
 /**
  Constant function
  */
-
 func constant <A> (x: A) -> A -> A {
   return {y in
     return x
@@ -21,6 +20,7 @@ func constant <A> (x: A) -> A -> A {
  Function composition
  */
 
+infix operator * {associativity left}
 func * <A,B,C> (g: B -> C, f: A -> B) -> (A -> C) {
   return { g(f($0)) }
 }
@@ -42,11 +42,22 @@ func <| <A, B> (f: A -> B, x: A) -> B {
 
 /**
  Currying
- */
+*/
 func curry <A, B, C> (f: (A, B) -> C) -> A -> B -> C {
   return {a in
     return {b in
       return f(a, b)
+    }
+  }
+}
+
+
+func curry <A, B, C, D> (f: (A, B, C) -> D) -> A -> B -> C -> D {
+  return {a in
+    return {b in
+      return {c in
+        return f(a, b, c)
+      }
     }
   }
 }
@@ -57,15 +68,17 @@ func uncurry <A, B, C> (f: A -> B -> C) -> (A, B) -> C {
   }
 }
 
+func uncurry <A, B, C, D> (f: A -> B -> C -> D) -> (A, B, C) -> D {
+  return {a, b, c in
+    return f(a)(b)(c)
+  }
+}
+
 /**
  Permuting arguments
  */
-func swap <A, B, C> (f: (A, B) -> C) -> (B, A) -> C {
+func flip <A, B, C> (f: (A, B) -> C) -> (B, A) -> C {
   return {b, a in
     return f(a, b)
   }
 }
-
-
-
-
