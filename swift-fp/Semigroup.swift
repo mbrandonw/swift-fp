@@ -8,12 +8,19 @@ func op <S: Semigroup> (s: S, t: S) -> S {
   return s.op(t)
 }
 
-func opl <S: Semigroup> (s: S) -> S -> S {
-  return {t in s.op(t)}
+infix operator ++ {associativity left}
+func ++ <S: Semigroup> (s: S, t: S) -> S {
+  return op(s, t)
 }
 
-func opr <S: Semigroup> (t: S) -> S -> S {
-  return {s in s.op(t)}
+prefix operator ++ {}
+prefix func ++ <S: Semigroup> (t: S) -> S -> S {
+  return {s in op(s, t)}
+}
+
+postfix operator ++ {}
+postfix func ++ <S: Semigroup> (s: S) -> S -> S {
+  return {t in op(s, t)}
 }
 
 func sconcat <S: Semigroup> (ss: [S]) -> S? {
