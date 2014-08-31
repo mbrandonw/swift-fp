@@ -11,6 +11,31 @@ enum Tree <A> {
 }
 
 /**
+ Printable
+ */
+
+extension Tree : Printable {
+  var description: String {
+    get {
+      return _description("")
+    }
+  }
+
+  private func _description(indent: String) -> String {
+    switch self {
+    case .Empty:
+      return "\(indent)(empty)"
+    case let .Leaf(value):
+      return "\(indent)\(value())"
+    case let .Node(left, value, right):
+      let leftDescription = left()._description(indent + "|--")
+      let rightDescription = right()._description(indent + "|--")
+      return "\(indent)\(value())\n\(leftDescription)\n\(rightDescription)"
+    }
+  }
+}
+
+/**
  Functor
  */
 func fmap <A, B> (f: A -> B) -> Tree<A> -> Tree<B> {
