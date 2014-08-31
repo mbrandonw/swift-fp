@@ -12,7 +12,7 @@ Created a `Num` typeclass and made all the native numeric types extend it. Now w
 
 ```swift
 func square <A: Num> (x: A) -> A {
-  return x.multiply(x)
+  return x * x
 }
 
 square(5)   //=> 25
