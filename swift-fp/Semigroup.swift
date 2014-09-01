@@ -4,23 +4,23 @@ protocol Semigroup {
   func op (g: Self) -> Self
 }
 
-func op <S: Semigroup> (s: S, t: S) -> S {
+func sop <S: Semigroup> (s: S, t: S) -> S {
   return s.op(t)
 }
 
 infix operator ++ {associativity left}
 func ++ <S: Semigroup> (s: S, t: S) -> S {
-  return op(s, t)
+  return sop(s, t)
 }
 
 prefix operator ++ {}
 prefix func ++ <S: Semigroup> (t: S) -> S -> S {
-  return {s in op(s, t)}
+  return {s in sop(s, t)}
 }
 
 postfix operator ++ {}
 postfix func ++ <S: Semigroup> (s: S) -> S -> S {
-  return {t in op(s, t)}
+  return {t in sop(s, t)}
 }
 
 func sconcat <S: Semigroup> (ss: [S]) -> S? {
