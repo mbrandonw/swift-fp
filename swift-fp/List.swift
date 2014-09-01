@@ -50,8 +50,27 @@ func isNil <A> (list: List<A>) -> Bool {
   }
 }
 
-func pushHead <A> (head: A, xs: List<A>) -> List<A> {
+func cons <A> (head: A, xs: List<A>) -> List<A> {
   return .Cons(head, xs)
+}
+
+infix operator +++ {associativity left}
+func +++ <A> (x: A, xs: List<A>) -> List<A> {
+  return cons(x, xs)
+}
+
+prefix operator +++ {}
+prefix func +++ <A> (xs: List<A>) -> A -> List<A> {
+  return {x in
+    return cons(x, xs)
+  }
+}
+
+postfix operator +++ {}
+postfix func +++ <A> (x: A) -> List<A> -> List<A> {
+  return {xs in
+    return cons(x, xs)
+  }
 }
 
 func append <A> (xs: List<A>, ys: List<A>) -> List<A> {
@@ -59,7 +78,7 @@ func append <A> (xs: List<A>, ys: List<A>) -> List<A> {
   case .Nil:
     return ys
   case let .Cons(x, tailxs):
-    return pushHead(x(), append(tailxs(), ys))
+    return cons(x(), append(tailxs(), ys))
   }
 }
 
