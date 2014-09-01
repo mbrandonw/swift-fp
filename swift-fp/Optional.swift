@@ -1,6 +1,24 @@
 import Foundation
 
 /**
+ Getters
+ */
+func isNone <A> (x: A?) -> Bool {
+  switch x {
+  case .Some: return false
+  case .None: return true
+  }
+}
+
+func isSome <A> (x: A?) -> Bool {
+  return !isNone(x)
+}
+
+func fromSome <A> (x: A?) -> A {
+  return x!
+}
+
+/**
  Constant nil function
  */
 func nilFunction <A, B> (x: A) -> B? {
