@@ -56,6 +56,18 @@ func <^> <A, B> (f: A -> B, xs: [A]) -> [B] {
   return fmap(f)(xs)
 }
 
+prefix operator <^> {}
+prefix func <^> <A, B> (f: A -> B) -> [A] -> [B] {
+  return fmap(f)
+}
+
+postfix operator <^> {}
+postfix func <^> <A, B> (xs: [A]) -> (A -> B) -> [B] {
+  return {f in
+    return fmap(f)(xs)
+  }
+}
+
 /**
  Monad
  */
