@@ -112,6 +112,17 @@ func _6 <A, B, C, D, E, F, G> (x: (A, B, C, D, E, F, G)) -> G {
 }
 
 /**
+ Functional setters
+ */
+func _0 <A, B> (a: A, x: (A, B)) -> (A, B) {
+  return (a, x.1)
+}
+
+func _1 <A, B> (b: B, x: (A, B)) -> (A, B) {
+  return (x.0, b)
+}
+
+/**
  Flip
  
  Precompose with a function (B, A) -> C to turn it into
