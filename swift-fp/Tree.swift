@@ -8,6 +8,20 @@ enum Tree <A> {
     @autoclosure () -> A,
     @autoclosure () -> Tree<A>
   )
+
+  init () {
+    self = .Empty
+  }
+}
+
+/**
+ Helper accessors
+ */
+func empty <A> (tree: Tree<A>) -> Bool {
+  switch tree {
+  case .Empty: return true
+  case .Leaf, .Node: return false
+  }
 }
 
 /**
