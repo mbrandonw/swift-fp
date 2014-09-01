@@ -43,15 +43,15 @@ extension Ordering : Monoid {
 /**
  A semigroup structure on functions into Ordering
  */
-func op <A> (f: A -> Ordering, g: A -> Ordering) -> A -> Ordering {
+func sop <A> (f: A -> Ordering, g: A -> Ordering) -> A -> Ordering {
   return {a in
-    return op(f(a), g(a))
+    return sop(f(a), g(a))
   }
 }
 
 infix operator ++ {associativity left}
 func ++ <A> (f: A -> Ordering, g: A -> Ordering) -> A -> Ordering {
-  return op(f, g)
+  return sop(f, g)
 }
 
 prefix operator ++ {}
