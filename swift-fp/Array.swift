@@ -51,6 +51,11 @@ func fmap <A, B> (f: A -> B) -> [A] -> [B] {
   }
 }
 
+infix operator <^> {associativity left}
+func <^> <A, B> (f: A -> B, xs: [A]) -> [B] {
+  return fmap(f)(xs)
+}
+
 /**
  Monad
  */
