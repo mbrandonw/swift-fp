@@ -136,3 +136,20 @@ func fmap <A, B> (f: A -> B) -> List<A> -> List<B> {
 /**
  Monad
  */
+
+func bind <A, B> (xs: List<A>, f: A -> List<B>) -> List<B> {
+  switch xs {
+  case .Nil:
+    return .Nil
+  case let .Cons(x, tail):
+    // why can't the type checker figure out ++ here?
+    return f(x()) ++ bind(tail(), f)
+  }
+}
+
+infix operator >>= {associativity left}
+func >>= <A, B> (xs: List<A>, f: A -> List<B>) -> List<B> {
+  return bind(xs, f)
+}
+
+
