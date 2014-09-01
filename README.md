@@ -26,8 +26,6 @@ let xs = [1, 1, 2, 3, 5, 8]
 map(xs, *3) //=> [3, 3, 6, 9, 15, 24]
 ```
 
-And of course in the future if we had `Vector`, `Matrix`, etc... types we could extend those classes to adopt `Num`.
-
 ## Combinators
 
 We've implemented a few basic function combinators:
