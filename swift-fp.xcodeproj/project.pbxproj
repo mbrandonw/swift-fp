@@ -10,7 +10,6 @@
 		CA1A29F8197B176B00AC3637 /* Monoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A29F7197B176B00AC3637 /* Monoid.swift */; };
 		CA56E80219B2538500234AFA /* Ordering.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA56E80119B2538500234AFA /* Ordering.swift */; };
 		CA56E80419B2A2A500234AFA /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA56E80319B2A2A500234AFA /* List.swift */; };
-		CA56E80619B2A7A700234AFA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CA56E80519B2A7A700234AFA /* README.md */; };
 		CA56E80819B2AA4600234AFA /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA56E80719B2AA4600234AFA /* Either.swift */; };
 		CA56E80A19B2B38F00234AFA /* ADT.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA56E80919B2B38F00234AFA /* ADT.swift */; };
 		CA5CF1E219A0081900B24959 /* LeafyTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5CF1E119A0081900B24959 /* LeafyTree.swift */; };
@@ -256,7 +255,6 @@
 				CA56E80A19B2B38F00234AFA /* ADT.swift in Sources */,
 				CAA4507B197B13CE00174E42 /* Semigroup.swift in Sources */,
 				CAE630ED1979C61E008D4143 /* Array.swift in Sources */,
-				CA56E80619B2A7A700234AFA /* README.md in Sources */,
 				CAE630EF1979CB72008D4143 /* Optional.swift in Sources */,
 				CA1A29F8197B176B00AC3637 /* Monoid.swift in Sources */,
 				CA56E80219B2538500234AFA /* Ordering.swift in Sources */,
