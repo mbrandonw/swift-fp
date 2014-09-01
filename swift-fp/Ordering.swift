@@ -41,7 +41,7 @@ extension Ordering : Monoid {
 }
 
 /**
- A semigroup structure on functions into Ordering
+ A semigroup structure on functions (A -> Ordering)
  */
 func sop <A> (f: A -> Ordering, g: A -> Ordering) -> A -> Ordering {
   return {a in
@@ -99,6 +99,16 @@ func < (lhs: Ordering, rhs: Ordering) -> Bool {
   case (_, _):
     return false
   }
+}
+
+/**
+ Spaceship operator
+ */
+infix operator <=> {associativity left}
+func <=> <A: Comparable> (left: A, right: A) -> Ordering {
+  if left < right { return .LT }
+  if left > right { return .GT }
+  return .EQ
 }
 
 /**
