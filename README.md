@@ -30,7 +30,7 @@ map(xs, *3) //=> [3, 3, 6, 9, 15, 24]
 
 We've implemented a few basic function combinators:
 
-```
+```swift
 // function composition
 (sqrt * sin)(3.0) //=> 0.375659...
 
