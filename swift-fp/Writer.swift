@@ -27,9 +27,9 @@ func log <A> (w: Writer<A>) -> String {
  */
 extension Writer : Printable {
   var description: String {
-  get {
-    return "\(value) (log: \(log))"
-  }
+    get {
+      return "\(value) (log: \(log))"
+    }
   }
 }
 
