@@ -6,6 +6,41 @@ enum List <A> {
     @autoclosure () -> A,
     @autoclosure () -> List<A>
   )
+
+  init () {
+    self = .Nil
+  }
+}
+
+func head <A> (xs: List<A>) -> A? {
+  switch xs {
+  case .Nil:
+    return nil
+  case let .Cons(head, _):
+    return head()
+  }
+}
+
+func tail <A> (xs: List<A>) -> List<A>? {
+  switch xs {
+  case .Nil:
+    return nil
+  case let .Cons(_, tail):
+    return tail()
+  }
+}
+
+private func _length <A> (xs: List<A>, accum: UInt) -> UInt {
+  switch xs {
+  case .Nil:
+    return accum
+  case let .Cons(_, tail):
+    return _length(tail(), accum + 1)
+  }
+}
+
+func length <A> (xs: List<A>) -> UInt {
+  return _length(xs, 0)
 }
 
 extension List : Printable, DebugPrintable {
