@@ -10,6 +10,10 @@ enum LeafyTree <A> {
     @autoclosure () -> LeafyTree<A>,
     @autoclosure () -> LeafyTree<A>
   )
+
+  init () {
+    self = .Empty
+  }
 }
 
 /**
@@ -92,7 +96,7 @@ prefix func >>= <A, B> (f: A -> LeafyTree<B>) -> LeafyTree<A> -> LeafyTree<B> {
 }
 
 /**
-Foldable
+ Foldable
 */
 
 func foldl <A, B> (f: A -> B -> A) -> A -> LeafyTree<B> -> A {
