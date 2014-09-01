@@ -43,6 +43,42 @@ func length <A> (xs: List<A>) -> UInt {
   return _length(xs, 0)
 }
 
+func isNil <A> (list: List<A>) -> Bool {
+  switch list {
+  case .Nil: return true
+  case .Cons: return false
+  }
+}
+
+func pushHead <A> (head: A, xs: List<A>) -> List<A> {
+  return .Cons(head, xs)
+}
+
+func append <A> (xs: List<A>, ys: List<A>) -> List<A> {
+  switch xs {
+  case .Nil:
+    return ys
+  case let .Cons(x, tailxs):
+    return pushHead(x(), append(tailxs(), ys))
+  }
+}
+
+/**
+ Semigroup, Monoid
+ */
+extension List : Semigroup, Monoid {
+  func op (list: List<A>) -> List<A> {
+    return append(self, list)
+  }
+
+  static func mzero () -> List<A> {
+    return .Nil
+  }
+}
+
+/**
+ Printable
+ */
 extension List : Printable, DebugPrintable {
   var description: String {
     get {
