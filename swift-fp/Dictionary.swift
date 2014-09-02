@@ -20,6 +20,12 @@ func fromArray <A: Hashable, B> (xs: [(A, B)]) -> [A:B] {
   return reduce(xs, [A:B](), merge)
 }
 
+func lookup <A, B> (k: A) -> [A:B] -> B? {
+  return {d in
+    return d[k]
+  }
+}
+
 /**
  Functor
  */
