@@ -1,8 +1,8 @@
 struct FactorialSequence : SequenceType {
-  func generate() -> GeneratorOf<UInt> {
-    var fn: UInt = 1
-    var n: UInt = 0
-    return GeneratorOf<UInt>() {
+  func generate() -> GeneratorOf<Int> {
+    var fn: Int = 1
+    var n: Int = 0
+    return GeneratorOf<Int>() {
       (fn, n) = (fn * (n + 1), n + 1)
       return fn
     };

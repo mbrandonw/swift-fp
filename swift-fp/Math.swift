@@ -32,13 +32,13 @@ func modinv (a: Int, m: Int) -> Int? {
 /**
  Factorial
  */
-private func tailFactorial (n: UInt, accum: UInt) -> UInt {
-  if n == 1 {
+private func tailFactorial (n: Int, accum: Int) -> Int {
+  if n <= 1 {
     return accum
   }
   return tailFactorial(n-1, n * accum)
 }
 
-func factorial (n: UInt) -> UInt {
+func factorial (n: Int) -> Int {
   return tailFactorial(n, 1)
 }

@@ -26,8 +26,8 @@ func * <A,B,C> (g: B -> C, f: A -> B) -> (A -> C) {
 }
 
 infix operator ^ {associativity left}
-func ^ <A> (f: A -> A, n: UInt) -> A -> A {
-  if n == 0 {
+func ^ <A> (f: A -> A, n: Int) -> A -> A {
+  if n <= 0 {
     return identity
   }
   return f * (f^(n-1))

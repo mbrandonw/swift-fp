@@ -30,7 +30,7 @@ func tail <A> (xs: List<A>) -> List<A>? {
   }
 }
 
-private func _length <A> (xs: List<A>, accum: UInt) -> UInt {
+private func _length <A> (xs: List<A>, accum: Int) -> Int {
   switch xs {
   case .Nil:
     return accum
@@ -39,7 +39,7 @@ private func _length <A> (xs: List<A>, accum: UInt) -> UInt {
   }
 }
 
-func length <A> (xs: List<A>) -> UInt {
+func length <A> (xs: List<A>) -> Int {
   return _length(xs, 0)
 }
 
