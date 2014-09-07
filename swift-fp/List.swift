@@ -143,7 +143,8 @@ func bind <A, B> (xs: List<A>, f: A -> List<B>) -> List<B> {
     return .Nil
   case let .Cons(x, tail):
     // why can't the type checker figure out ++ here?
-    return f(x()) ++ bind(tail(), f)
+//    return f(x()) ++ bind(tail(), f)
+    return append(f(x()), bind(tail(), f))
   }
 }
 
