@@ -35,17 +35,27 @@ func ^ <A> (f: A -> A, n: UInt) -> A -> A {
 
 /**
  Pipe operators
- x |> f
- f <| x
+ x |> f   f(x)
+ f <| x   f(x)
+ f |> g   f(g)
+ f <| g   g(f)
  */
 infix operator |> {associativity left}
 func |> <A, B> (x: A, f: A -> B) -> B {
   return f(x)
 }
 
+func |> <A, B, C> (f: A -> B, g: B -> C) -> A -> C {
+  return { g(f($0)) }
+}
+
 infix operator <| {associativity right}
 func <| <A, B> (f: A -> B, x: A) -> B {
   return f(x)
+}
+
+func <| <A, B, C> (f: B -> C, g: A -> B) -> A -> C {
+  return { f(g($0)) }
 }
 
 /**
