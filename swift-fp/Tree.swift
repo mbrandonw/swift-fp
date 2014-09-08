@@ -75,6 +75,45 @@ func fmap <A, B> (f: A -> B) -> Tree<A> -> Tree<B> {
 
 // Can't do it in any natural way!
 
+//func bind <A, B> (tree: Tree<A>, f: A -> Tree<B>) -> Tree<B> {
+//  switch tree {
+//  case .Empty:
+//    return .Empty
+//  case let .Leaf(value):
+//    return .Leaf(f(value()))
+//  case let .Node(left, value, right):
+//     return .Node(bind(left(), f), ?????, bind(right(), f))
+//  }
+//}
+
+/**
+ Applicative
+ */
+func ap <A, B> (fs: Tree<A -> B>) -> Tree<A> -> Tree<B> {
+  return {tree in
+    switch (fs, tree) {
+    case (.Empty, .Empty), (.Leaf, .Empty), (.Node, .Empty), (.Empty, .Leaf), (.Empty, .Node):
+      return .Empty
+
+    case let (.Leaf(f), .Leaf(value)):
+      return .Leaf(f()(value()))
+
+    case let (.Leaf(f), .Node(left, value, right)):
+      return .Leaf(f()(value()))
+
+    case let (.Node(leftfs, f, rightfs), .Leaf(value)):
+      return .Leaf(f()(value()))
+
+    case let (.Node(leftfs, f, rightfs), .Node(left, value, right)):
+      return .Node(
+        ap(leftfs())(left()),
+        f()(value()),
+        ap(rightfs())(right())
+      )
+    }
+  }
+}
+
 /**
  Foldable
  */
